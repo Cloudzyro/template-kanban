@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@import "@fontsource-variable/figtree";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-page: var(--page);
+  --color-lane: var(--lane);
+  --color-card: var(--card);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-late: var(--late);
+  --color-ok: var(--ok);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Light: grey surfaces, one marker-orange accent taken from the colored rule on an index card */
+:root {
+  color-scheme: light;
+  --page: #f5f5f4;
+  --lane: #ebebe9;
+  --card: #ffffff;
+  --raised: #f0f0ee;
+  --line: rgb(28 27 25 / 0.09);
+  --line-strong: rgb(28 27 25 / 0.16);
+  --fg: #1c1b19;
+  --fg-2: #55524d;
+  --muted: #6a6761;
+  --accent: #c2410c;
+  --accent-ink: #ffffff;
+  --accent-soft: #fbe7dc;
+  --rule: rgb(194 65 12 / 0.3);
+  --late: #b42335;
+  --ok: #2f7d4f;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-lift: 0 12px 28px rgb(0 0 0 / 0.12), 0 2px 6px rgb(0 0 0 / 0.06);
+}
+
+.dark {
+  color-scheme: dark;
+  --page: #141415;
+  --lane: #19191b;
+  --card: #232325;
+  --raised: #2a2a2d;
+  --line: rgb(237 237 237 / 0.08);
+  --line-strong: rgb(237 237 237 / 0.14);
+  --fg: #ededed;
+  --fg-2: #a8a8ad;
+  --muted: #8b8b91;
+  --accent: #f08a4b;
+  --accent-ink: #1c1b19;
+  --accent-soft: #3a2619;
+  --rule: rgb(240 138 75 / 0.32);
+  --late: #f2808a;
+  --ok: #4cc38a;
+  --shadow: none;
+  --shadow-lift: 0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+body {
+  background: var(--page);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  ::selection {
+    background: var(--accent-soft);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  button,
+  [role="button"],
+  select {
+    cursor: pointer;
+  }
+}
+
+/* The index-card rule: a thin orange line under each card's title */
+.card-rule {
+  border-bottom: 1px solid var(--rule);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.scroll-x {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.drawer-in {
+  animation: drawer-in 320ms var(--ease-out);
+}
+.fade-in {
+  animation: fade-in 200ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

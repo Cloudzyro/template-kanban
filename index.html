@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harbor & Pine Boards</title>
+    <meta name="description" content="Kanban boards for a small design studio: projects, columns, cards with checklists, labels, assignees and due dates." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Harbor & Pine Boards" />
+    <meta property="og:description" content="Kanban boards for a small design studio: projects, columns, cards with checklists, labels, assignees and due dates." />
+    <meta property="og:image" content="__SITE_URL__/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141415" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          var d = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (d) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>These boards need JavaScript to run.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
